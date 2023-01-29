@@ -1,65 +1,31 @@
 import React from 'react'
-import {
-    Table,
-    Thead,
-    TableContainer,
-    Tr,
-    Th,
-    TableCaption,
-    Tfoot,
-    Tbody,
-    Td,
-} from '@chakra-ui/react'
-import styled from 'styled-components'
-export default function Users() {
-    const users = [
-        {
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '07/06/1991',
-            salary: 'R$ 6000,00',
-        },
-        {
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '07/06/1991',
-            salary: 'R$ 6000,00',
-        },
-        {
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '07/06/1991',
-            salary: 'R$ 6000,00',
-        },
-        {
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '07/06/1991',
-            salary: 'R$ 6000,00',
-        },
-    ]
+import { Tr, Td } from '@chakra-ui/react'
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import { IconButton } from '@chakra-ui/react'
+
+type TUserProps = {
+    name: string
+    email: string
+    cpf: string
+    birthDay: string
+    salary: string
+}
+
+export default function User(props: TUserProps) {
+    const { name, email, cpf, birthDay, salary } = props
     return (
         <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td isNumeric>25.4</Td>
+            <Td>{name}</Td>
+            <Td>{email}</Td>
+            <Td>{cpf}</Td>
+            <Td>{birthDay}</Td>
+            <Td>{salary}</Td>
+            <Td>
+                <IconButton aria-label="atualizar" icon={<EditIcon />} />
+            </Td>
+            <Td>
+                <IconButton aria-label="deletar" icon={<DeleteIcon />} />
+            </Td>
         </Tr>
     )
 }
-
-const StyledTable = styled.div`
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    img {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-    }
-`
