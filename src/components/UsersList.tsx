@@ -20,7 +20,7 @@ export default function UsersList(props: TUserListProps) {
     } = props
 
     return (
-        <TableContainer>
+        <TableContainer w="80vw" display="flex" margin="auto">
             <Table size="md">
                 <Thead>
                     <Tr>

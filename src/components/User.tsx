@@ -36,10 +36,15 @@ export default function User(props: TUserProps) {
                     onClick={updateEntry}
                     aria-label="atualizar"
                     icon={<EditIcon />}
+                    colorScheme="blue"
                 />
             </Td>
             <Td>
-                <IconButton aria-label="deletar" icon={<DeleteIcon />} />
+                <IconButton
+                    aria-label="deletar"
+                    icon={<DeleteIcon />}
+                    colorScheme="red"
+                />
             </Td>
         </Tr>
     )
