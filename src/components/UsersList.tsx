@@ -2,9 +2,10 @@ import React from 'react'
 import { Table, Thead, TableContainer, Tr, Th, Tbody } from '@chakra-ui/react'
 import User from './User'
 
-export default function UsersList(props) {
+export default function UsersList(props: any) {
     const users = [
         {
+            id: 1,
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
@@ -12,6 +13,7 @@ export default function UsersList(props) {
             salary: 'R$ 6000,00',
         },
         {
+            id: 2,
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
@@ -19,6 +21,7 @@ export default function UsersList(props) {
             salary: 'R$ 6000,00',
         },
         {
+            id: 3,
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
@@ -26,6 +29,7 @@ export default function UsersList(props) {
             salary: 'R$ 6000,00',
         },
         {
+            id: 4,
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
@@ -33,6 +37,7 @@ export default function UsersList(props) {
             salary: 'R$ 6000,00',
         },
     ]
+
     return (
         <TableContainer>
             <Table size="md">
@@ -49,17 +54,9 @@ export default function UsersList(props) {
                 </Thead>
                 <Tbody>
                     {users.map((user, index) => {
-                        const { name, email, cpf, birthDay, salary } = user
-                        return (
-                            <User
-                                key={index}
-                                name={name}
-                                email={email}
-                                cpf={cpf}
-                                birthDay={birthDay}
-                                salary={salary}
-                            />
-                        )
+                        const { statesProps } = props
+                        const userProps = { user, statesProps }
+                        return <User key={index} userProps={userProps} />
                     })}
                 </Tbody>
             </Table>

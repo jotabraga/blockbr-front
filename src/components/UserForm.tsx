@@ -6,9 +6,9 @@ import { Heading, VStack } from '@chakra-ui/react'
 import Header from './Header'
 
 export default function UserForm(props: any) {
+    const { statesProps } = props
     const {
         id,
-        setId,
         name,
         setName,
         email,
@@ -19,7 +19,7 @@ export default function UserForm(props: any) {
         setBirthDay,
         salary,
         setSalary,
-    } = props
+    } = statesProps
 
     async function submit(event: FormEvent) {
         event.preventDefault()

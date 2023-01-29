@@ -2,17 +2,32 @@ import React from 'react'
 import { Tr, Td } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
+import { TStateProps, TUser } from '../App'
 
 type TUserProps = {
-    name: string
-    email: string
-    cpf: string
-    birthDay: string
-    salary: string
+    userProps: {
+        user: TUser
+        statesProps: TStateProps
+    }
 }
 
 export default function User(props: TUserProps) {
-    const { name, email, cpf, birthDay, salary } = props
+    const {
+        userProps: { user, statesProps },
+    } = props
+    const { name, email, cpf, birthDay, salary, id } = user
+    const { setId, setName, setEmail, setCpf, setBirthDay, setSalary } =
+        statesProps
+
+    function updateEntry() {
+        setId(id)
+        setName(name)
+        setEmail(email)
+        setCpf(cpf)
+        setBirthDay(birthDay)
+        setSalary(salary)
+    }
+
     return (
         <Tr>
             <Td>{name}</Td>
@@ -21,7 +36,11 @@ export default function User(props: TUserProps) {
             <Td>{birthDay}</Td>
             <Td>{salary}</Td>
             <Td>
-                <IconButton aria-label="atualizar" icon={<EditIcon />} />
+                <IconButton
+                    onClick={updateEntry}
+                    aria-label="atualizar"
+                    icon={<EditIcon />}
+                />
             </Td>
             <Td>
                 <IconButton aria-label="deletar" icon={<DeleteIcon />} />

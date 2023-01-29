@@ -4,6 +4,31 @@ import UsersList from './components/UsersList'
 import { UserApi } from './hooks/userApi'
 import styled from 'styled-components'
 
+export type TUser = {
+    id: number
+    name: string
+    email: string
+    cpf: string
+    birthDay: string
+    salary: string
+}
+
+export type TStateProps = {
+    id: number
+    setId: React.Dispatch<React.SetStateAction<number>>
+    name: string
+    setName: React.Dispatch<React.SetStateAction<string>>
+    email: string
+    setEmail: React.Dispatch<React.SetStateAction<string>>
+    cpf: string
+    setCpf: React.Dispatch<React.SetStateAction<string>>
+    birthDay: string
+    setBirthDay: React.Dispatch<React.SetStateAction<string>>
+    salary: string
+    setSalary: React.Dispatch<React.SetStateAction<string>>
+    usersList: TUser[]
+}
+
 function App() {
     const [id, setId] = useState(undefined)
     const [name, setName] = useState('')
@@ -25,7 +50,7 @@ function App() {
             .catch((error) => console.error(error.message))
     }, [])
 
-    const componentsProps = {
+    const statesProps = {
         id,
         setId,
         name,
@@ -44,8 +69,8 @@ function App() {
 
     return (
         <MainContainer>
-            <UserForm componentsProps />
-            <UsersList componentsProps />
+            <UserForm statesProps={statesProps} />
+            <UsersList statesProps={statesProps} />
         </MainContainer>
     )
 }
