@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 	#root {
 		height: 100%;
         background-color: #0e3c62;
-        color: white
+        color: #fefefe
 	}
 
 	::-webkit-scrollbar{

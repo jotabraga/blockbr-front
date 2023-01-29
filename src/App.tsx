@@ -120,5 +120,5 @@ export default App
 
 const MainContainer = styled.div`
     background-color: #0e3c62;
-    color: white;
+    color: #fefefe;
 `

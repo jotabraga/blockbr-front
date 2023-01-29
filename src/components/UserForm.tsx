@@ -6,6 +6,7 @@ import { Heading, VStack } from '@chakra-ui/react'
 import Header from './Header'
 import { UserApi } from '../hooks/userApi'
 import { TStateProps } from '../App'
+import styled from 'styled-components'
 
 type TUserListProps = {
     statesProps: TStateProps
@@ -116,17 +117,33 @@ export default function UserForm(props: TUserListProps) {
                     onChange={(e) => setSalary(e.target.value)}
                 />
             </FormControl>
-            <Button
-                onClick={(e) => handleSubmitForm(e)}
-                type="submit"
-                variant="outline"
-                colorScheme="teal"
-            >
-                {id !== undefined ? 'Atualizar' : 'Salvar'}
-            </Button>
-            <Button onClick={cleanForm} variant="outline" colorScheme="teal">
-                Limpar
-            </Button>
+            <ButtonContainer>
+                <Button
+                    onClick={(e) => handleSubmitForm(e)}
+                    bg="#6ee2fa"
+                    color="#020e27"
+                    type="submit"
+                    variant="outline"
+                    colorScheme="teal"
+                >
+                    {id !== undefined ? 'Atualizar' : 'Salvar'}
+                </Button>
+                <Button
+                    bg="#6ee2fa"
+                    color="#020e27"
+                    onClick={cleanForm}
+                    variant="outline"
+                    colorScheme="teal"
+                >
+                    Limpar
+                </Button>
+            </ButtonContainer>
         </VStack>
     )
 }
+
+const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+`
