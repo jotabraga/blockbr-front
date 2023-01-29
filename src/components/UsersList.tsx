@@ -9,7 +9,7 @@ export default function UsersList(props: any) {
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
-            birthDay: '07/06/1991',
+            birthDay: '1991-06-07',
             salary: 'R$ 6000,00',
         },
         {
@@ -17,7 +17,7 @@ export default function UsersList(props: any) {
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
-            birthDay: '07/06/1991',
+            birthDay: '1991-06-07',
             salary: 'R$ 6000,00',
         },
         {
@@ -25,7 +25,7 @@ export default function UsersList(props: any) {
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
-            birthDay: '07/06/1991',
+            birthDay: '1991-06-07',
             salary: 'R$ 6000,00',
         },
         {
@@ -33,7 +33,7 @@ export default function UsersList(props: any) {
             name: 'Jao',
             email: 'jao@gmail.com',
             cpf: '4323423434',
-            birthDay: '07/06/1991',
+            birthDay: '1991-06-07',
             salary: 'R$ 6000,00',
         },
     ]

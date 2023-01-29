@@ -24,7 +24,10 @@ export default function User(props: TUserProps) {
         setName(name)
         setEmail(email)
         setCpf(cpf)
-        setBirthDay(birthDay)
+        const [birthDayInDateFormat] = new Date(birthDay)
+            .toISOString()
+            .split('T')
+        setBirthDay(birthDayInDateFormat)
         setSalary(salary)
     }
 

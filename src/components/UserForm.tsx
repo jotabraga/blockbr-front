@@ -80,7 +80,7 @@ export default function UserForm(props: any) {
                 <FormLabel>Salário</FormLabel>
                 <Input
                     name="salary"
-                    type="number"
+                    type="string"
                     value={salary}
                     onChange={(e) => setSalary(e.target.value)}
                 />
