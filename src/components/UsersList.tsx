@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Thead, TableContainer, Tr, Th, Tbody } from '@chakra-ui/react'
 import User from './User'
 
-export default function UsersList() {
+export default function UsersList(props) {
     const users = [
         {
             name: 'Jao',

@@ -1,2 +1,3 @@
 # blockbr-front
-BlockBR challenge - Front-end
+
+BlockBR - Front-end
