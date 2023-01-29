@@ -1,42 +1,15 @@
 import React from 'react'
 import { Table, Thead, TableContainer, Tr, Th, Tbody } from '@chakra-ui/react'
 import User from './User'
+import { TStateProps } from '../App'
+type TUserListProps = {
+    statesProps: TStateProps
+}
 
-export default function UsersList(props: any) {
-    const users = [
-        {
-            id: 1,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 2,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 3,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 4,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-    ]
+export default function UsersList(props: TUserListProps) {
+    const {
+        statesProps: { usersList },
+    } = props
 
     return (
         <TableContainer>
@@ -53,7 +26,7 @@ export default function UsersList(props: any) {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {users.map((user, index) => {
+                    {usersList.map((user, index) => {
                         const { statesProps } = props
                         const userProps = { user, statesProps }
                         return <User key={index} userProps={userProps} />

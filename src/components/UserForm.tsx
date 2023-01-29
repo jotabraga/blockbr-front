@@ -4,11 +4,18 @@ import { FormControl, FormLabel } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/input'
 import { Heading, VStack } from '@chakra-ui/react'
 import Header from './Header'
+import { UserApi } from '../hooks/userApi'
+import { TStateProps } from '../App'
 
-export default function UserForm(props: any) {
+type TUserListProps = {
+    statesProps: TStateProps
+}
+
+export default function UserForm(props: TUserListProps) {
     const { statesProps } = props
     const {
         id,
+        setId,
         name,
         setName,
         email,
@@ -19,15 +26,39 @@ export default function UserForm(props: any) {
         setBirthDay,
         salary,
         setSalary,
+        usersList,
+        setUsersList,
     } = statesProps
 
-    async function submit(event: FormEvent) {
-        event.preventDefault()
-    }
+    const api = new UserApi()
 
     async function handleSubmitForm(event: FormEvent) {
         event.preventDefault()
+        if (id !== undefined) {
+            await api
+                .updateUser(id)
+                .then((response) => setUsersList(response.data))
+                .catch(() => console.error('Erro ao atualizar dado'))
+        } else {
+            await api
+                .createUser({ name, email, cpf, birthDay, salary })
+                .then((response) => {
+                    const listWithAddedUser = [...usersList, response.data]
+                    setUsersList(listWithAddedUser)
+                })
+                .catch(() => console.error('Erro ao criar usuário'))
+        }
     }
+
+    function cleanForm() {
+        setId(undefined)
+        setName('')
+        setEmail('')
+        setCpf('')
+        setBirthDay('mm/dd/yyyy')
+        setSalary('')
+    }
+
     return (
         <VStack
             as="form"
@@ -35,7 +66,7 @@ export default function UserForm(props: any) {
             w={{ base: '90%', md: 500 }}
             justifyContent="center"
             h="75vh"
-            onSubmit={submit}
+            onSubmit={handleSubmitForm}
             spacing="3"
         >
             <Heading>
@@ -92,6 +123,9 @@ export default function UserForm(props: any) {
                 colorScheme="teal"
             >
                 {id !== undefined ? 'Atualizar' : 'Salvar'}
+            </Button>
+            <Button onClick={cleanForm} variant="outline" colorScheme="teal">
+                Limpar
             </Button>
         </VStack>
     )

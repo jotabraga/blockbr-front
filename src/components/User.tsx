@@ -2,14 +2,7 @@ import React from 'react'
 import { Tr, Td } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
-import { TStateProps, TUser } from '../App'
-
-type TUserProps = {
-    userProps: {
-        user: TUser
-        statesProps: TStateProps
-    }
-}
+import { TUserProps } from '../App'
 
 export default function User(props: TUserProps) {
     const {

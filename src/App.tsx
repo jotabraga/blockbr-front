@@ -4,8 +4,15 @@ import UsersList from './components/UsersList'
 import { UserApi } from './hooks/userApi'
 import styled from 'styled-components'
 
+export type TUserProps = {
+    userProps: {
+        user: TUser
+        statesProps: TStateProps
+    }
+}
+
 export type TUser = {
-    id: number
+    id: number | undefined
     name: string
     email: string
     cpf: string
@@ -14,8 +21,8 @@ export type TUser = {
 }
 
 export type TStateProps = {
-    id: number
-    setId: React.Dispatch<React.SetStateAction<number>>
+    id: number | undefined
+    setId: React.Dispatch<React.SetStateAction<any>>
     name: string
     setName: React.Dispatch<React.SetStateAction<string>>
     email: string
@@ -27,6 +34,7 @@ export type TStateProps = {
     salary: string
     setSalary: React.Dispatch<React.SetStateAction<string>>
     usersList: TUser[]
+    setUsersList: React.Dispatch<React.SetStateAction<TUser[]>>
 }
 
 function App() {
@@ -34,9 +42,42 @@ function App() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [cpf, setCpf] = useState('')
-    const [birthDay, setBirthDay] = useState('')
+    const [birthDay, setBirthDay] = useState(null)
     const [salary, setSalary] = useState('')
-    const [usersList, setUsersList] = useState([])
+    const [usersList, setUsersList] = useState([
+        {
+            id: 1,
+            name: 'Jao',
+            email: 'jao@gmail.com',
+            cpf: '4323423434',
+            birthDay: '1991-06-07',
+            salary: 'R$ 6000,00',
+        },
+        {
+            id: 2,
+            name: 'Jao',
+            email: 'jao@gmail.com',
+            cpf: '4323423434',
+            birthDay: '1991-06-07',
+            salary: 'R$ 6000,00',
+        },
+        {
+            id: 3,
+            name: 'Jao',
+            email: 'jao@gmail.com',
+            cpf: '4323423434',
+            birthDay: '1991-06-07',
+            salary: 'R$ 6000,00',
+        },
+        {
+            id: 4,
+            name: 'Jao',
+            email: 'jao@gmail.com',
+            cpf: '4323423434',
+            birthDay: '1991-06-07',
+            salary: 'R$ 6000,00',
+        },
+    ])
 
     const api = new UserApi()
 
