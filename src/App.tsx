@@ -11,13 +11,16 @@ export type TUserProps = {
     }
 }
 
-export type TUser = {
-    id: number | undefined
+export type TCreateUser = {
     name: string
     email: string
     cpf: string
     birthDay: string
     salary: string
+}
+
+export type TUser = TCreateUser & {
+    id: number | undefined
 }
 
 export type TStateProps = {
@@ -44,50 +47,15 @@ function App() {
     const [cpf, setCpf] = useState('')
     const [birthDay, setBirthDay] = useState(null)
     const [salary, setSalary] = useState('')
-    const [usersList, setUsersList] = useState([
-        {
-            id: 1,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 2,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 3,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-        {
-            id: 4,
-            name: 'Jao',
-            email: 'jao@gmail.com',
-            cpf: '4323423434',
-            birthDay: '1991-06-07',
-            salary: 'R$ 6000,00',
-        },
-    ])
+    const [usersList, setUsersList] = useState([])
 
     const api = new UserApi()
 
     useEffect(() => {
-        const getUsersList = async () => {
-            const response = await api.getUsersList()
-            return response.data
-        }
-        getUsersList()
-            .then((list) => setUsersList(list))
+        api.getUsersList()
+            .then((response) => {
+                console.log(response)
+            })
             .catch((error) => console.error(error.message))
     }, [])
 

@@ -1,23 +1,20 @@
-import axios from "axios";
-
-const instance = axios.create({
-    baseURL: import.meta.env.VITE_REACT_APP_API_BASE_URL
-});
+import api from './api'
+import { TCreateUser, TUser } from '../App';
 
 export class UserApi {
     async getUsersList() {
-        return await instance.get('/users');
+        return await api.get('/users');
     }
 
-    async createUser(body) {
-        return await instance.post('/users', body);
+    async createUser(body: TCreateUser) {
+        return await api.post('/users', body);
     }
 
-    async updateUser(body) {
-        return await instance.put('/users', body);
+    async updateUser(body: TUser) {
+        return await api.put('/users', body);
     }
 
     async deleteUser(id: number) {
-        return await instance.delete('/users');
+        return await api.delete(`/users/${id}`);
     }
 }
