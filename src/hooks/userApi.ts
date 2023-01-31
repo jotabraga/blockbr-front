@@ -1,5 +1,5 @@
 import api from './api'
-import { TCreateUser, TUser } from '../App';
+import { TCreateUser } from '../App';
 
 export class UserApi {
     async getUsersList() {
@@ -10,8 +10,8 @@ export class UserApi {
         return await api.post('/users', body);
     }
 
-    async updateUser(body: TUser) {
-        return await api.put('/users', body);
+    async updateUser(id: number, body: TCreateUser) {
+        return await api.put(`/users/${id}/user`, body);
     }
 
     async deleteUser(id: number) {

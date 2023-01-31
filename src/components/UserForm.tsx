@@ -36,13 +36,17 @@ export default function UserForm(props: TUserListProps) {
     async function handleSubmitForm(event: FormEvent) {
         event.preventDefault()
         if (id !== undefined) {
-            await api
-                .updateUser(id)
-                .then((response) => setUsersList(response.data))
+            api.updateUser(id, { name, email, cpf, birthDay, salary })
+                .then((response) => {
+                    const updatedUser = response.data
+                    const updatedUserList = usersList.map((user) =>
+                        user.id === updatedUser.id ? updatedUser : user
+                    )
+                    setUsersList(updatedUserList)
+                })
                 .catch(() => console.error('Erro ao atualizar dado'))
         } else {
-            await api
-                .createUser({ name, email, cpf, birthDay, salary })
+            api.createUser({ name, email, cpf, birthDay, salary })
                 .then((response) => {
                     const listWithAddedUser = [...usersList, response.data]
                     setUsersList(listWithAddedUser)
