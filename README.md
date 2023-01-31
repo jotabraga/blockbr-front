@@ -6,7 +6,7 @@
 
 ## About 🔎
 
-This is an simple api based in typeorm node and typescript.
+This is an vite / react / typescript front-end application.
 
 ## Tech tools 🔧
 
