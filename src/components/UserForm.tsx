@@ -106,6 +106,7 @@ export default function UserForm(props: TUserListProps) {
                     type="date"
                     value={birthDay}
                     onChange={(e) => setBirthDay(e.target.value)}
+                    color="#fefefe"
                 />
             </FormControl>
             <FormControl>

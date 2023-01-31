@@ -15,6 +15,6 @@ export class UserApi {
     }
 
     async deleteUser(id: number) {
-        return await api.delete(`/users/${id}`);
+        return await api.delete(`/users/${id}/user`);
     }
 }

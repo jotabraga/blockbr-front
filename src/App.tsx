@@ -54,7 +54,7 @@ function App() {
     useEffect(() => {
         api.getUsersList()
             .then((response) => {
-                console.log(response)
+                setUsersList(response.data)
             })
             .catch((error) => console.error(error.message))
     }, [])

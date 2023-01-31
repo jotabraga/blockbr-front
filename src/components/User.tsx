@@ -3,14 +3,24 @@ import { Tr, Td } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
 import { TUserProps } from '../App'
+import { UserApi } from '../hooks/userApi'
 
 export default function User(props: TUserProps) {
     const {
         userProps: { user, statesProps },
     } = props
     const { name, email, cpf, birthDay, salary, id } = user
-    const { setId, setName, setEmail, setCpf, setBirthDay, setSalary } =
-        statesProps
+    const {
+        setId,
+        setName,
+        setEmail,
+        setCpf,
+        setBirthDay,
+        setSalary,
+        setUsersList,
+        usersList,
+    } = statesProps
+    const api = new UserApi()
 
     function updateEntry() {
         setId(id)
@@ -22,6 +32,19 @@ export default function User(props: TUserProps) {
             .split('T')
         setBirthDay(birthDayInDateFormat)
         setSalary(salary)
+    }
+
+    function removeUser() {
+        try {
+            api.deleteUser(Number(id)).then(() => {
+                const updatedListWithoutUser = usersList.filter(
+                    (user) => user.id !== id
+                )
+                setUsersList(updatedListWithoutUser)
+            })
+        } catch (error) {
+            console.trace(error)
+        }
     }
 
     return (
@@ -44,6 +67,7 @@ export default function User(props: TUserProps) {
                     aria-label="deletar"
                     icon={<DeleteIcon />}
                     colorScheme="red"
+                    onClick={removeUser}
                 />
             </Td>
         </Tr>
