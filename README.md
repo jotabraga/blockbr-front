@@ -38,7 +38,7 @@ npm run build
 4. Start application
 
 ```bash
-nom run dev
+npm run dev
 ```
 
 5. Finally get your application running in http://localhost:5173/
